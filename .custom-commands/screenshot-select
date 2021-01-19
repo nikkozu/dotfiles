@@ -18,9 +18,6 @@ font              = "JetBrains-Mono-Regular-Nerd-Font-Complete"
 font_size         = "11"
 color_fg          = "#ffffff"
 color_bg          = "#666666"
-author_position   = ["SouthWest", "+31+16"]
-author            = "Shooter: @" + \
-                    os.popen("echo $USER").read().rstrip("\n")
 radius            = "10"
 
 os.system(f"""
@@ -38,11 +35,6 @@ convert {target_file} \\( +clone -background black \
 
 convert {target_file} -bordercolor {background_color} \
 -border {background_size} {target_file} \
-
-echo -n " {author} " | convert {target_file} \
--gravity {author_position[0]} -pointsize {font_size} -fill '{color_fg}' \
--undercolor '{color_bg}' -font {font} \
--annotate {author_position[1]} @- {target_file} \
 
 convert {target_file} -gravity South -chop 0x{int(background_size)/2} \
 {target_file} \
@@ -62,3 +54,4 @@ if 'X' in last_file:
 size = os.popen(f"find {last_file} -printf %s").read()
 if size == "0":
     os.system(f"rm -rf {last_file}")
+
