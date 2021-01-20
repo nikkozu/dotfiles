@@ -2,23 +2,25 @@
 
 import os
 from datetime import datetime
+from pathlib import Path
 
-screenshot_dir    = "/home/masami/Pictures/screenshots"
+home             = str(Path.home())
+screenshot_dir   = f"{home}/Pictures/screenshots"
 os.chdir(screenshot_dir)
-original_file     = datetime.now().strftime("Screenshot_%Y-%m-%d_%H-%M-%S.png")
-target            = list(original_file)
+original_file    = datetime.now().strftime("Screenshot_%Y-%m-%d_%H-%M-%S.png")
+target           = list(original_file)
 target.insert(-4, 'X')
-target_file       = ''.join(target)
-color_profile     = "/usr/share/color/icc/colord/sRGB.icc"
-border_size       = "1"
-background_color  = "white"
-background_size   = "10"
-shadow_size       = "40x5+0+10"
-font              = "JetBrains-Mono-Regular-Nerd-Font-Complete"
-font_size         = "11"
-color_fg          = "#ffffff"
-color_bg          = "#666666"
-radius            = "10"
+target_file      = ''.join(target)
+color_profile    = "/usr/share/color/icc/colord/sRGB.icc"
+border_size      = "1"
+background_color = "white"
+background_size  = "10"
+shadow_size      = "40x5+0+10"
+font             = "JetBrains-Mono-Regular-Nerd-Font-Complete"
+font_size        = "11"
+color_fg         = "#ffffff"
+color_bg         = "#666666"
+radius           = "10"
 
 os.system(f"""
 flameshot gui --raw > {original_file}
