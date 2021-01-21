@@ -1,5 +1,3 @@
-local awful = require("awful")
-
 -- Client key bindings
 client.connect_signal("request::default_keybindings", function()
     awful.keyboard.append_client_keybindings({

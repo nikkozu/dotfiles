@@ -1,5 +1,3 @@
-local awful = require("awful")
-
 -- Global mouse bindings
 awful.mouse.append_global_mousebindings({
     awful.button({ }, 3, function () mymainmenu:toggle() end),

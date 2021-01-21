@@ -1,5 +1,3 @@
-local awful = require("awful");
-
 -- Launc application keys
 awful.keyboard.append_global_keybindings({
     -- spawn without shell

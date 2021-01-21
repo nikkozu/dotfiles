@@ -1,5 +1,3 @@
-local awful = require("awful")
-
 -- {{{ Global Key Bindings
 -- Custom command keys
 awful.keyboard.append_global_keybindings({

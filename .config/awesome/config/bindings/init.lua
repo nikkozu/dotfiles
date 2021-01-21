@@ -1,3 +1,5 @@
+awful = require("awful")
+
 return {
     require("config.bindings.client"),
     require("config.bindings.global"),
