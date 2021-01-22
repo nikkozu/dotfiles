@@ -1,6 +1,0 @@
-[submodule ".config/awesome/lain"]
-	path = .config/awesome/lain
-	url = https://github.com/lcpz/lain
-[submodule ".config/awesome/widgets/touchpad-widget"]
-	path = .config/awesome/widgets/touchpad-widget
-	url = https://github.com/velovix/awesome.touchpad-widget
