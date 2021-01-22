@@ -69,3 +69,11 @@ function restart-swap() {
   sudo swapoff -a && sudo swapon -a
 }
 
+# get random file name
+
+function random-file() {
+  ls | sort -R | tail -$N | while read file; do
+    echo $file
+  done
+}
+
