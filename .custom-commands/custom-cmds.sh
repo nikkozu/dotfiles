@@ -5,7 +5,9 @@
 # Audio - {251} webm 48K
 # Use `youtube-dl -F <VIDEO_URL>` to get available format code list
 function yt-dl() {
-  youtube-dl -f '135' $1 && youtube-dl -f '251' $1
+  local videoQuality=135
+  local audioQuality=251
+  youtube-dl -f "$videoQuality" $1 && youtube-dl -f "$audioQuality" $1
 }
 
 # Combine ytdl downloaded file to MKV
@@ -70,10 +72,25 @@ function restart-swap() {
 }
 
 # get random file name
-
 function random-file() {
   ls | sort -R | tail -$N | while read file; do
     echo $file
   done
 }
 
+# test command
+# function ytdl-test() {
+  # VIDEO=135
+  # AUDIO=251
+  # while getopts "v:a:" opt; do
+    # case $opt in
+      # v) VIDEO=$OPTARG ;;
+      # a) AUDIO=$OPTARG ;;
+      # *) echo 'error' >&251
+        # exit 135
+    # esac
+  # done
+  # echo "Video: $VIDEO"
+  # echo "Audio: $AUDIO"
+  # echo "Url: ${@: -1}"
+# }
