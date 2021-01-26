@@ -4,7 +4,7 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local gears   = require("gears")
+local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 -- Theme handling library
@@ -13,8 +13,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 -- Declarative object management
 local hotkeys = require("awful.hotkeys_popup.widget")
--- Declarative object management
-local ruled = require("ruled")
+
 -- Touchpad Widget
 -- to disable/enable touchpad when mouse is connected
 local touchpad_widget = require("widgets.touchpad-widget")
@@ -66,17 +65,25 @@ myawesomemenu = {
     { "hotkeys"    , function() hotkeys_popup:show_help(nil, awful.screen.focused()) end },
     { "edit config", default.editor_cmd .. " " .. awesome.conffile },
     { "reload wm"  , awesome.restart }
- }
+}
+
+-- confirmation menu
+function confirmation(method)
+    return {
+        { "Yes", method },
+        { "No" , "false" },
+    }
+end
 
 -- main menu
 mymainmenu = awful.menu({
     items = {
         { "awesome"      , myawesomemenu, beautiful.awesome_icon },
         { "open terminal", default.terminal },
-        { "lock screen"  , default.lock_screen },
-        { "logout"       , function() awesome.quit() end },
-        { "reboot"       , "reboot" },
-        { "shutdown"     , "shutdown -h now" },
+        { "lock screen"  , confirmation(default.lock_screen) },
+        { "logout"       , confirmation(function() awesome.quit() end) },
+        { "reboot"       , confirmation("reboot") },
+        { "shutdown"     , confirmation("shutdown -h now") },
     }
 })
 
@@ -84,7 +91,7 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                       menu = mymainmenu })
 -- End Menu }}}
 
--- {{{ Tag
+-- {{{ Tag layouts
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
@@ -103,7 +110,7 @@ tag.connect_signal("request::default_layouts", function()
         -- awful.layout.suit.corner.nw,
     })
 end)
--- End Tag }}}
+-- End tag layouts }}}
 
 -- Wibar
 require("config.wibar")
@@ -111,23 +118,6 @@ require("config.wibar")
 require("config.bindings")
 -- Rules
 require("config.rules")
-
--- {{{ Notifications
-ruled.notification.connect_signal('request::rules', function()
-    -- All notifications will match this rule.
-    ruled.notification.append_rule {
-        rule       = { },
-        properties = {
-            screen           = awful.screen.preferred,
-            implicit_timeout = 5,
-        }
-    }
-end)
-
-naughty.connect_signal("request::display", function(n)
-    naughty.layout.box { notification = n }
-end)
--- End Notifications }}}
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
