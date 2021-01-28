@@ -55,5 +55,8 @@ client.connect_signal("request::default_keybindings", function()
             end,
             {description = "(un)maximize horizontally", group = "client"}
         ),
+        awful.key({ modkey, "Shift"   }, "y", awful.placement.centered,
+            {description = "move floating client to center", group = "client"}
+        ),
     })
 end)
