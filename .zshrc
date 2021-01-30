@@ -139,6 +139,7 @@ export QT_IM_MODULE=ibus
 
 # total history that can zsh save
 SAVEHIST=1000
+HISTFILE="$HOME/.zsh_history"
 
 # phpbrew bashrc
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
