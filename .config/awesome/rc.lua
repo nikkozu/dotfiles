@@ -68,7 +68,7 @@ myawesomemenu = {
 }
 
 -- confirmation menu
-function confirmation(method)
+function confirm(method)
     return {
         { "Yes", method },
         { "No" , "false" },
@@ -80,10 +80,10 @@ mymainmenu = awful.menu({
     items = {
         { "awesome"      , myawesomemenu, beautiful.awesome_icon },
         { "open terminal", default.terminal },
-        { "lock screen"  , confirmation(default.lock_screen) },
-        { "logout"       , confirmation(function() awesome.quit() end) },
-        { "reboot"       , confirmation("reboot") },
-        { "shutdown"     , confirmation("shutdown -h now") },
+        { "lock screen"  , confirm(default.lock_screen) },
+        { "logout"       , confirm(function() awesome.quit() end) },
+        { "reboot"       , confirm("reboot") },
+        { "shutdown"     , confirm("shutdown -h now") },
     }
 })
 
