@@ -49,8 +49,8 @@ beautiful.notification_shape     = myshape
 
 -- hotkeys_popup configurations
 hotkeys_popup = hotkeys.new({ 
-    height = 720,
-    width  = 400,
+    height = 650,
+    width  = 800,
     shape  = myshape
 })
 

@@ -70,10 +70,10 @@ awful.keyboard.append_global_keybindings({
         {description = "restore minimized", group = "client"}
     ),
     awful.key({ altkey,           }, "Tab", function() awful.client.focus.byidx( 1) end,
-        {description = "focus next by index", group = "client"}
+        {description = "focus next client", group = "client"}
     ),
-    awful.key({ altkey, "Shift"   }, "Tab", function() awful.client.focus.byidx(-1) end
-    ),
+    -- awful.key({ altkey, "Shift"   }, "Tab", function() awful.client.focus.byidx(-1) end
+    -- ),
 })
 
 -- Layout related keybindings

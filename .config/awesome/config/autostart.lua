@@ -1,6 +1,5 @@
 -- MODULE AUTO-START
 -- Run all the apps listed in config/apps.lua as autostart_apps only once when awesome start
-
 local awful = require("awful")
 local apps  = require("config.apps")
 
