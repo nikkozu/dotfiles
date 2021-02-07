@@ -16,6 +16,7 @@ masami45 dotfiles backup
 - .icons
 - .themes
 - .zshrc
+- hosts
 - more in future
 
 ## Screenshot
