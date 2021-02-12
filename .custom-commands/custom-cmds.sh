@@ -73,7 +73,11 @@ function restart-swap() {
 
 # get random file name
 function random-file() {
-  ls | sort -R | tail -$N | while read file; do
+  echo -n "How much file do you want? "
+  read -n totalFile
+
+  echo "-----------------------------"
+  ls | sort -R | tail -$totalFile | while read file; do
     echo $file
   done
 }
