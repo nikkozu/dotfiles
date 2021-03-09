@@ -9,6 +9,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/jsonc.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'mattn/emmet-vim'
 
 " Files tree
 Plug 'preservim/nerdtree'
