@@ -43,23 +43,64 @@ function make-cbz() {
 }
 
 # Starting httpd & mysqld
-function lampp() {
+function lemp() {
   if [[ $# -eq 0 ]] ; then
-    echo "need flags for this command, --start or --stop"
+    echo "Please provide flags fot this command, --start or --stop"
   fi
 
-  for i in "$@"
+  for arg in "$@"
   do
-    case $i in
+    case $arg in
       --start)
-        systemctl start httpd && systemctl start mysqld
-        ;;
+        case $2 in
+          all)
+            for service in nginx php-fpm7 mariadb
+            do
+              systemctl start $service.service
+            done
+            shift
+            ;;
+          server)
+            for service in nginx php-fpm7
+            do
+              systemctl start $service.service
+            done
+            shift
+            ;;
+          db|database)
+            systemctl start mariadb.service
+            shift
+            ;;
+          *)
+            ;;
+        esac
+        shift
+      ;;
       --stop)
-        systemctl stop httpd && systemctl stop mysqld
-        ;;
-      --restart)
-        systemctl restart httpd
-        ;;
+        case $2 in
+          all)
+            for service in nginx php-fpm7 mariadb
+            do
+              systemctl stop $service.service
+            done
+            shift
+            ;;
+          server)
+            for service in nginx php-fpm7
+            do
+              systemctl stop $service.service
+            done
+            shift
+            ;;
+          db|database)
+            systemctl stop mariadb.service
+            shift
+            ;;
+          *)
+            ;;
+        esac
+        shift
+      ;;
       *)
         ;;
     esac
