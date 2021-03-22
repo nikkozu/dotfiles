@@ -141,6 +141,3 @@ export QT_IM_MODULE=ibus
 SAVEHIST=1000
 HISTFILE="$HOME/.zsh_history"
 
-# phpbrew bashrc
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
