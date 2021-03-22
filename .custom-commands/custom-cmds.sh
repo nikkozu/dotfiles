@@ -56,19 +56,19 @@ function lemp() {
           all)
             for service in nginx php-fpm7 mariadb
             do
-              systemctl start $service.service
+              sudo systemctl start $service.service
             done
             shift
             ;;
           server)
             for service in nginx php-fpm7
             do
-              systemctl start $service.service
+              sudo systemctl start $service.service
             done
             shift
             ;;
           db|database)
-            systemctl start mariadb.service
+            sudo systemctl start mariadb.service
             shift
             ;;
           *)
@@ -81,19 +81,19 @@ function lemp() {
           all)
             for service in nginx php-fpm7 mariadb
             do
-              systemctl stop $service.service
+              sudo systemctl stop $service.service
             done
             shift
             ;;
           server)
             for service in nginx php-fpm7
             do
-              systemctl stop $service.service
+              sudo systemctl stop $service.service
             done
             shift
             ;;
           db|database)
-            systemctl stop mariadb.service
+            sudo systemctl stop mariadb.service
             shift
             ;;
           *)
