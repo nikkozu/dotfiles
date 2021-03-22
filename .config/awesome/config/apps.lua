@@ -18,7 +18,7 @@ return {
             selected = "~/.custom-commands/screenshot-select",
         },
         rofi        = "~/.config/rofi/launchers/launcher.sh",
-        wallpaper   = "~/Pictures/wallpapers/andre-benz-BCraX7OJsnI-unsplash.jpg",
+        wallpaper   = "~/Pictures/wallpapers/EwR_yS9U8AEWjfg.jpeg",
     },
 
     -- auto start apps with command
