@@ -141,3 +141,6 @@ export QT_IM_MODULE=ibus
 SAVEHIST=1000
 HISTFILE="$HOME/.zsh_history"
 
+# Disk Path
+export LITTLE_DEVIL=$(df /dev/sda1 | awk 'NR > 1 {print $6}')
+
