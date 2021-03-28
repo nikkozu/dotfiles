@@ -123,6 +123,10 @@ function random-file() {
   done
 }
 
+function get-doujin() {
+  python $HOME/.custom-commands/get-doujin
+}
+
 # test command
 # function ytdl-test() {
   # VIDEO=135

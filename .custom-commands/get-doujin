@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+
+import os, random, glob
+
+base_dir   = os.getenv('LITTLE_DEVIL')
+doujin_dir = f"{base_dir}/A_Masami/Manga/.doujin"
+os.chdir(doujin_dir)
+target_dir = f"{doujin_dir}/mobile"
+
+# sort file function
+def sort_file_by_size(file_list, size):
+    results = []
+
+    for file in file_list:
+        file_size = os.stat(file).st_size
+        file_size_mb = file_size / (1024 * 1024)
+
+        # If the file size more than selected file, then remove it
+        if file_size_mb >= size:
+            file_list.remove(file)
+        else: # else, add the file to results list
+            results.append(file)
+
+    return results
+
+# moving the file
+def move_the_file(file_list):
+    if os.path.exists(target_dir) == False:
+        os.mkdir(target_dir)
+
+    for file in file_list:
+        os.system(f'mv "{doujin_dir}/{file}" "{target_dir}"')
+        print(file)
+
+# START
+total_file = int(input("How much file do you want [5]: ") or 5)
+file_size  = int(input("Max size of file you want (in MB) [50]: ") or 50)
+print("-------------------------------------------")
+
+get_files = glob.glob('*.cbz')
+
+res_list = sort_file_by_size(get_files, file_size)
+random.shuffle(res_list)
+
+move_the_file(res_list[:total_file])
+print("-------------------------------------------")
+print("Files Successfully Moved!")
+#  files = os.popen(f"ls | sort -R | grep .cbz | tail -{totalFile}").read().split("\n")[:-1]
+
+#  for f in files:
+    #  os.system(f'mv "{doujin_dir}/{f}" {doujin_dir}/mobile')
+    #  print(f)
+
+#  print("-------------------------------");
+#  print("Files successfully moved")
+
+#  files = glob.glob('*.cbz');
+#  random.shuffle(files)
+#  print(files[:int(totalFile)])
