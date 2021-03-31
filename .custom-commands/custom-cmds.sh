@@ -124,7 +124,11 @@ function random-file() {
 }
 
 function get-doujin() {
-  python $HOME/.custom-commands/get-doujin
+  $HOME/.custom-commands/get-doujin
+}
+
+function testing() {
+  $HOME/.custom-commands/testing "$@"
 }
 
 # test command

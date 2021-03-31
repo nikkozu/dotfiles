@@ -22,7 +22,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'hugolgst/vimsence'
+Plug 'vimsence/vimsence'
 Plug 'vim-airline/vim-airline'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'tpope/vim-fugitive'
