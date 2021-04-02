@@ -59,21 +59,21 @@ awful.keyboard.append_global_keybindings({
 
 -- Focus related keybindings
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey, "Control" }, "n",
-        function()
-            local c = awful.client.restore()
-            -- Focus restored client
-            if c then
-                c:activate { raise = true, context = "key.unminimize" }
-            end 
-        end,
-        {description = "restore minimized", group = "client"}
-    ),
+    -- awful.key({ modkey, "Control" }, "n",
+        -- function()
+            -- local c = awful.client.restore()
+            -- -- Focus restored client
+            -- if c then
+                -- c:activate { raise = true, context = "key.unminimize" }
+            -- end 
+        -- end,
+        -- {description = "restore minimized", group = "client"}
+    -- ),
     awful.key({ altkey,           }, "Tab", function() awful.client.focus.byidx( 1) end,
         {description = "focus next client", group = "client"}
     ),
-    -- awful.key({ altkey, "Shift"   }, "Tab", function() awful.client.focus.byidx(-1) end
-    -- ),
+    awful.key({ altkey, "Shift"   }, "Tab", function() awful.client.focus.byidx(-1) end
+    ),
 })
 
 -- Layout related keybindings
