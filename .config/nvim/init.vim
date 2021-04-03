@@ -154,6 +154,7 @@ let g:NERDTreeGitStatusUseNerdFonts=1
 let g:NERDTreeWinPos="LEFT"
 let NERDTreeShowBookmarks=1
 autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd h
 
 " syntastic
 set statusline+=%#warningmsg#
