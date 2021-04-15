@@ -92,7 +92,7 @@ set ttyfast
 set number
 
 " Enable mouse
-set mouse=nv
+set mouse=a
 
 " Automatically change the current directory
 " For Discord Presence workspace status
