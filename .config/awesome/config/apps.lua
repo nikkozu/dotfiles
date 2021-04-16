@@ -10,7 +10,6 @@ return {
         explorer    = "nemo",
         browser     = {
             brave   = "brave-browser-dev",
-            firefox = "firefox-developer-edition"
         },
         discord     = "discord-canary",
         screenshot  = {

@@ -16,9 +16,6 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "b", function() awful.spawn(default.browser.brave) end,
         {description = "open browser", group = "launcher"}
     ),
-    awful.key({ modkey, "Shift"   }, "b", function() awful.spawn(default.browser.firefox) end,
-        {description = "open browser", group = "launcher"}
-    ),
     awful.key({ modkey            }, "n", function() awful.spawn(default.editor_cmd) end,
         {description = "open editor", group = "launcher"}
     ),
