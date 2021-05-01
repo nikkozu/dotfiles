@@ -22,7 +22,7 @@ ruled.client.connect_signal("request::rules", function()
         rule_any = {
             class = {
                 "Lxpolkit", "DiscordCanary", "Nemo", "Nm-connection-editor",
-                "TelegramDesktop",
+                "TelegramDesktop", "Xarchiver",
             },
             name  = { "Save File", "Open Files", },
         },
