@@ -12,7 +12,7 @@ local function run_cmd(cmd)
     -- spawn the listed apps
     awful.spawn.with_shell(
         string.format(
-            'if (command -v %s && ! pgrep %s); then %s&; fi', findname, findname, cmd
+            'if command -v %s && ! pgrep %s ; then %s& ; fi', findname, findname, cmd
         )
     )
 end
