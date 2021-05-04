@@ -16,7 +16,7 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # Fav=("philips")
-ZSH_THEME="amuse"
+ZSH_THEME="philips"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,9 +79,9 @@ ZSH_THEME="amuse"
 plugins=(
   git
   node
+  zsh-nvm
   zsh-autosuggestions
   zsh-syntax-highlighting
-  zsh-nvm
 )
 
 source $ZSH/oh-my-zsh.sh
