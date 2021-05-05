@@ -79,7 +79,8 @@ ZSH_THEME="philips"
 plugins=(
   git
   node
-  zsh-nvm
+  fzf
+  # zsh-nvm
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
