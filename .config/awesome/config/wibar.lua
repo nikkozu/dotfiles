@@ -40,7 +40,11 @@ local mynet = wibox.widget {
 -- set the widget
 lain.widget.net {
     settings = function()
-        mynet:set_markup(net_now.sent + net_now.received .. " kB/s")
+        filesize = require 'filesize'
+        local total = net_now.sent + net_now.received
+
+        mynet:set_markup(filesize(total * 1000) .. '/s')
+        -- mynet:set_markup(net_now.sent + net_now.received .. " kB/s")
     end
 }
 

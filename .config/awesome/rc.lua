@@ -17,7 +17,7 @@ local hotkeys = require("awful.hotkeys_popup.widget")
 -- Touchpad Widget
 -- to disable/enable touchpad when mouse is connected
 local touchpad_widget = require("widgets.touchpad-widget")
-touchpad_widget:new({ vendor = "Razer USA, Ltd DeathAdder Essential" })
+touchpad_widget:new({ vendor = "Sunplus Innovation Technology Inc." })
 -- Configuration folder
 require("config")
 
