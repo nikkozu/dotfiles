@@ -112,17 +112,30 @@ function restart-swap() {
   sudo swapoff -a && sudo swapon -a
 }
 
-# get random file name
-function random-file() {
-  echo -n "How much file do you want? "
-  read -n totalFile
+function crandr() {
+  if [[ $# -eq 0 ]] ; then
+    crandr start
+  fi
 
-  echo "-----------------------------"
-  ls | sort -R | tail -$totalFile | while read file; do
-    echo $file
+  for arg in "$@"
+  do
+    case $arg in
+      stop)
+        xrandr --output VGA1 --off
+        shift
+        ;;
+      start)
+        xrandr --newmode "1280x768_60.00"   79.50  1280 1344 1472 1664  768 771 781 798 -hsync +vsync
+        xrandr --addmode VGA1 "1280x768_60.00"
+        xrandr --output LVDS1 --mode 1366x768
+        xrandr --output VGA1 --mode 1280x768_60.00 --right-of LVDS1
+        shift
+        ;;
+    esac
   done
 }
 
+# Python custom commands
 function get-doujin() {
   $HOME/.custom-commands/get-doujin
 }
