@@ -7,6 +7,8 @@ local batteryarc_widget    = require("widgets.batteryarc-widget")
 local brightnessarc_widget = require("widgets.brightnessarc-widget")
 local volumearc_widget     = require("widgets.volumearc-widget")
 
+local filesize = require 'filesize'
+
 -- {{{ Create Widget
 -- Create a textclock widget
 local JapanDay    = {
@@ -40,7 +42,6 @@ local mynet = wibox.widget {
 -- set the widget
 lain.widget.net {
     settings = function()
-        filesize = require 'filesize'
         local total = net_now.sent + net_now.received
 
         mynet:set_markup(filesize(total * 1000) .. '/s')
@@ -58,7 +59,7 @@ local mymem = wibox.widget {
 -- set the widget
 lain.widget.mem {
     settings = function()
-        mymem:set_markup(mem_now.used .. " MiB")
+        mymem:set_markup(filesize(mem_now.used * 1072500))
     end
 }
 
