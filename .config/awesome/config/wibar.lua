@@ -41,6 +41,7 @@ local mynet = wibox.widget {
 }
 -- set the widget
 lain.widget.net {
+    timeout = 1,
     settings = function()
         local total = net_now.sent + net_now.received
 
