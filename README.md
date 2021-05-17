@@ -1,5 +1,5 @@
 # dotfiles
-masami45 dotfiles backup
+nikkozu dotfiles backup
 
 ## How to install?
 - Just copy what you need to $HOME
