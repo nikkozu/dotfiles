@@ -249,11 +249,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
                 sprtr,
-                wibox.widget.systray(),
-                sprtr,
                 mynet,
                 sprtr,
                 mymem, -- memory widget
+                sprtr,
+                wibox.widget.systray(),
                 sprtr,
                 myvol, -- volume widget
                 single_space,
