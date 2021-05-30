@@ -45,7 +45,7 @@ lain.widget.net {
     settings = function()
         local total = net_now.sent + net_now.received
 
-        mynet:set_markup("net: " .. filesize(total * 1000) .. '/s')
+        mynet:set_markup(filesize(total * 1000) .. '/s')
         -- mynet:set_markup(net_now.sent + net_now.received .. " kB/s")
     end
 }
@@ -60,7 +60,7 @@ local mymem = wibox.widget {
 -- set the widget
 lain.widget.mem {
     settings = function()
-        mymem:set_markup("mem: " .. filesize(mem_now.used * 1072500))
+        mymem:set_markup(filesize(mem_now.used * 1072500))
     end
 }
 
