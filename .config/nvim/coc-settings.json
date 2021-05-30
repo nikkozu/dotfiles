@@ -22,6 +22,12 @@
 
   // Lua language
   "lua.enable": true,
+  "Lua.diagnostics.globals": [
+    "awful", "awesome", "client",
+    "altkey", "modkey",
+    "hotkeys_popup", "mymainmenu",
+    "default"
+  ],
 
   // {{{ Javascript & Typescript
   /* "eslint.options": { */
