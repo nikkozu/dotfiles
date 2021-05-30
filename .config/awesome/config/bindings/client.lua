@@ -1,6 +1,19 @@
+-- local cyclefocus = require("widgets.awesome-cyclefocus")
+
 -- Client key bindings
 client.connect_signal("request::default_keybindings", function()
     awful.keyboard.append_client_keybindings({
+ --        cyclefocus.key({ altkey }, "Tab", {
+            -- cycle_filters = { cyclefocus.filters.same_screen, cyclefocus.filters.common_tag },
+            -- keys = { "Tab", "ISO_Left_Tab" }
+        -- }),
+
+        awful.key({ altkey,           }, "Tab", function() awful.client.focus.byidx( 1) end,
+            {description = "focus next client", group = "client"}
+        ),
+        awful.key({ altkey, "Shift"   }, "Tab", function() awful.client.focus.byidx(-1) end
+        ),
+
         awful.key({ modkey,           }, "q", function(c) c:kill()              end,
             {description = "quit", group = "client"}
         ),
