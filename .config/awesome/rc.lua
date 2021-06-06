@@ -48,7 +48,7 @@ beautiful.notification_icon_size = 90
 beautiful.notification_shape     = myshape
 
 -- hotkeys_popup configurations
-hotkeys_popup = hotkeys.new({ 
+hotkeys_popup = hotkeys.new({
     height = 650,
     width  = 800,
     shape  = myshape
