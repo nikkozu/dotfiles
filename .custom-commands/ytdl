@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+import sys, os
+
+yt_link = sys.argv.pop(-1)
+video_quality = 135
+audio_quality = 251
+video_name = os.popen(f"youtube-dl --get-filename {yt_link} | sed 's/\.[^.]*$//'").read().rstrip("\n")
+
+os.system(f"""
+youtube-dl -f {video_quality} {yt_link} && youtube-dl -f {audio_quality} {yt_link}
+
+mkvmerge --ui-language en_US --output "{video_name}.mkv" \
+--language 0:und '(' "{video_name}.mp4" ')' \
+--language 0:eng --default-track 0:yes '(' "{video_name}.webm" ')' --track-order 0:0,1:0
+
+rm "{video_name}.mp4"
+rm "{video_name}.webm"
+
+ffmpeg -i "{video_name}.mkv" -c:v copy "{video_name}.mp4"
+
+rm "{video_name}.mkv"
+
+echo "Downloaded succesfull, {video_name}.mkv"
+""")
