@@ -73,10 +73,12 @@ set termguicolors
 
 " Turn on syntax highlighting
 let g:miramare_enable_italic=1
+let g:miramare_enable_bold=1
 
 " let g:gruvbox_italic=1
 " let g:gruvbox_contrast_dark='hard'
 " let g:gruvbox_invert_selection=0
+
 colorscheme miramare
 
 " Automatically wrap text that extends beyond the screen length
