@@ -43,7 +43,7 @@ end
 beautiful.init("~/.config/awesome/themes/default/theme.lua")
 beautiful.font                   = "Proxima Nova Alt 10"
 beautiful.menu_font              = "Noto Sans 9"
-beautiful.useless_gap            = 5
+beautiful.useless_gap            = 3
 beautiful.notification_icon_size = 90
 beautiful.notification_shape     = myshape
 
@@ -95,8 +95,8 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
-        awful.layout.suit.max,
         awful.layout.suit.tile,
+        awful.layout.suit.max,
         -- awful.layout.suit.tile.left,
         -- awful.layout.suit.tile.bottom,
         -- awful.layout.suit.tile.top,
@@ -135,11 +135,11 @@ end)
 client.connect_signal("property::fullscreen", function(c)
     if c.fullscreen then
         c.shape = function(cr,w,h)
-            gears.shape.rectangle(cr,w,h,10)
+            gears.shape.rectangle(cr,w,h,5)
         end
     else
         c.shape = function(cr,w,h)
-            gears.shape.rounded_rect(cr,w,h,10)
+            gears.shape.rounded_rect(cr,w,h,5)
         end
     end
 end)
