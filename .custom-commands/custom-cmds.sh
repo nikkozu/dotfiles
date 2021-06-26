@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Convert MKV to MP4
+function mkv2mp4() {
+  local filePath="$1"
+  local filename=${filePath%%.*}
+
+  ffmpeg -i "$1" -c:v copy "$filename.mp4"
+}
+
 # Make multiple CBZ file
 function make-cbz() {
   zip -rj "$1.cbz" "$1"
@@ -98,6 +106,31 @@ function lemp() {
             ;;
           db|database)
             sudo systemctl stop mariadb.service
+            shift
+            ;;
+          *)
+            ;;
+        esac
+        shift
+      ;;
+      --restart)
+        case $2 in
+          all)
+            for service in nginx php-fpm7 mariadb
+            do
+              sudo systemctl restart $service.service
+            done
+            shift
+            ;;
+          server)
+            for service in nginx php-fpm7
+            do
+              sudo systemctl restart $service.service
+            done
+            shift
+            ;;
+          db|database)
+            sudo systemctl restart mariadb.service
             shift
             ;;
           *)
