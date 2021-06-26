@@ -16,4 +16,5 @@
 
 style="style_normal_grid_round"
 
-rofi -show drun -theme launchers/"$style".rasi
+# rofi -show drun -theme launchers/"$style".rasi
+rofi -show drun -modi "drun,run" -theme launchers/"$style".rasi
