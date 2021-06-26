@@ -56,94 +56,135 @@ function ytdl() {
 
 # Starting httpd & mysqld
 function lemp() {
-  if [[ $# -eq 0 ]] ; then
-    echo "Please provide flags fot this command, --start or --stop"
+  # check if the command match with require commands
+  if [[ ! $1 =~ "restart|start|stop" ]]; then
+    echo 'Please only provide "start", "stop", or "restart" command'
+    return;
   fi
 
-  for arg in "$@"
+  # if command match, start the process from here
+  services=("server=(nginx php-fpm7)" "db=(mariadb)")
+
+  for service in "${services[@]}";
   do
-    case $arg in
-      --start)
-        case $2 in
-          all)
-            for service in nginx php-fpm7 mariadb
-            do
-              sudo systemctl start $service.service
-            done
-            shift
-            ;;
-          server)
-            for service in nginx php-fpm7
-            do
-              sudo systemctl start $service.service
-            done
-            shift
-            ;;
-          db|database)
-            sudo systemctl start mariadb.service
-            shift
-            ;;
-          *)
-            ;;
-        esac
-        shift
-      ;;
-      --stop)
-        case $2 in
-          all)
-            for service in nginx php-fpm7 mariadb
-            do
-              sudo systemctl stop $service.service
-            done
-            shift
-            ;;
-          server)
-            for service in nginx php-fpm7
-            do
-              sudo systemctl stop $service.service
-            done
-            shift
-            ;;
-          db|database)
-            sudo systemctl stop mariadb.service
-            shift
-            ;;
-          *)
-            ;;
-        esac
-        shift
-      ;;
-      --restart)
-        case $2 in
-          all)
-            for service in nginx php-fpm7 mariadb
-            do
-              sudo systemctl restart $service.service
-            done
-            shift
-            ;;
-          server)
-            for service in nginx php-fpm7
-            do
-              sudo systemctl restart $service.service
-            done
-            shift
-            ;;
-          db|database)
-            sudo systemctl restart mariadb.service
-            shift
-            ;;
-          *)
-            ;;
-        esac
-        shift
-      ;;
-      *)
-        ;;
-    esac
+    eval $service
   done
+
+  case $2 in
+    all)
+      for all in "${server[@]}" "${db[@]}";
+      do
+        sudo systemctl $1 $all
+      done
+      shift
+      ;;
+    server)
+      for server in "${server[@]}";
+      do
+        sudo systemctl $1 $server
+      done
+      shift
+      ;;
+    db)
+      for db in "${db[@]}";
+      do
+        sudo systemctl $1 $db
+      done
+      shift
+      ;;
+    *)
+      ;;
+  esac
 }
 
+# function lemp() {
+  # if [[ $# -eq 0 ]] ; then
+    # echo "Please provide flags fot this command, --start or --stop"
+  # fi
+
+  # for arg in "$@"
+  # do
+    # case $arg in
+      # --start)
+        # case $2 in
+          # all)
+            # for service in nginx php-fpm7 mariadb
+            # do
+              # sudo systemctl start $service.service
+            # done
+            # shift
+            # ;;
+          # server)
+            # for service in nginx php-fpm7
+            # do
+              # sudo systemctl start $service.service
+            # done
+            # shift
+            # ;;
+          # db|database)
+            # sudo systemctl start mariadb.service
+            # shift
+            # ;;
+          # *)
+            # ;;
+        # esac
+        # shift
+      # ;;
+      # --stop)
+        # case $2 in
+          # all)
+            # for service in nginx php-fpm7 mariadb
+            # do
+              # sudo systemctl stop $service.service
+            # done
+            # shift
+            # ;;
+          # server)
+            # for service in nginx php-fpm7
+            # do
+              # sudo systemctl stop $service.service
+            # done
+            # shift
+            # ;;
+          # db|database)
+            # sudo systemctl stop mariadb.service
+            # shift
+            # ;;
+          # *)
+            # ;;
+        # esac
+        # shift
+      # ;;
+      # --restart)
+        # case $2 in
+          # all)
+            # for service in nginx php-fpm7 mariadb
+            # do
+              # sudo systemctl restart $service.service
+            # done
+            # shift
+            # ;;
+          # server)
+            # for service in nginx php-fpm7
+            # do
+              # sudo systemctl restart $service.service
+            # done
+            # shift
+            # ;;
+          # db|database)
+            # sudo systemctl restart mariadb.service
+            # shift
+            # ;;
+          # *)
+            # ;;
+        # esac
+        # shift
+      # ;;
+      # *)
+        # ;;
+    # esac
+  # done
+# }
 
 # function bw-add() {
   # local loginTemplate=$(bw get template item.login | jq ".username=\"$2\" | .password=\"$3\"")
