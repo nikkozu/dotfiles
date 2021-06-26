@@ -1,5 +1,5 @@
 -- local cyclefocus = require("widgets.awesome-cyclefocus")
-local switcher = require("widgets.awesome-switcher")
+local switcher = require("plugins.awesome-switcher")
 
 -- Client key bindings
 client.connect_signal("request::default_keybindings", function()

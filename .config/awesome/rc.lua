@@ -16,10 +16,10 @@ local hotkeys = require("awful.hotkeys_popup.widget")
 
 -- Touchpad Widget
 -- to disable/enable touchpad when mouse is connected
-local touchpad_widget = require("widgets.touchpad-widget")
+local touchpad_widget = require("plugins.touchpad-widget")
 touchpad_widget:new({ vendor = "Sunplus Innovation Technology Inc." })
 -- Configuration folder
-require("config")
+require("configs")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -113,11 +113,11 @@ end)
 -- End tag layouts }}}
 
 -- Wibar
-require("config.wibar")
+require("configs.wibar")
 -- Bindings
-require("config.bindings")
+require("configs.bindings")
 -- Rules
-require("config.rules")
+require("configs.rules")
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)

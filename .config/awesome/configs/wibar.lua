@@ -3,9 +3,9 @@ local wibox     = require("wibox")
 local beautiful = require("beautiful")
 
 local lain                 = require("lain")
-local batteryarc_widget    = require("widgets.batteryarc-widget")
-local brightnessarc_widget = require("widgets.brightnessarc-widget")
-local volumearc_widget     = require("widgets.volumearc-widget")
+local batteryarc_widget    = require("plugins.batteryarc-widget")
+local brightnessarc_widget = require("plugins.brightnessarc-widget")
+local volumearc_widget     = require("plugins.volumearc-widget")
 
 local filesize = require 'filesize'
 
