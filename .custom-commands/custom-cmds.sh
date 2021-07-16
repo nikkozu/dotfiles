@@ -97,6 +97,22 @@ function lemp() {
   esac
 }
 
+# Github user config
+function gituser() {
+  git config user.email "masami45@tuta.io"
+  git config user.name "nikkozu"
+}
+
+# G++ compile and run
+function gpp() {
+  local filePath="$1"
+  local filename=${filePath%%.*}
+
+  g++ ${filename}.cpp -o ${filename}
+  ./${filename}
+  rm ${filename}
+}
+
 # function bw-add() {
   # local loginTemplate=$(bw get template item.login | jq ".username=\"$2\" | .password=\"$3\"")
   # bw get template item | jq ".name=\"$1\" | .login=$loginTemplate" | bw encode | bw create item
