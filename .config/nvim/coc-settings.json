@@ -1,42 +1,11 @@
 {
-  // Language diagnostic
-  "diagnostic.enable": true,
-  "diagnostic.errorSign": "✘",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "",
+   // coc-tsserver
+   "diagnostic.errorSign": "✘",
+   "diagnostic.warningSign": "",
+   "diagnostic.infoSign": "",
 
-  "suggest.noselect": false,
-  
-  // Format on save
-  "coc.preferences.formatOnSaveFiletypes": [
-    /*"typescript",*/
-    "typescriptreact",
-    "json",
-    "javscriptreact",
-    "typescript.tsx",
-    "graphql"
-  ],
+   // coc-json
 
-  // Prettier
-  "prettier.tabWidth": 2,
-
-  // Lua language
-  "lua.enable": true,
-  "Lua.diagnostics.globals": [
-    "awful", "awesome", "client",
-    "altkey", "modkey",
-    "hotkeys_popup", "mymainmenu",
-    "default"
-  ],
-
-  // {{{ Javascript & Typescript
-  /* "eslint.options": { */
-    /* "configFile": "~/.eslintrc.yml" */
-  /* }, */
-
-  "javascript.suggestionActions.enabled": false,
-
-  "tsserver.enable": true,
-  "tsserver.enableJavascript": true
-  // }}}
+   // coc-intelephense
+   "intelephense.progress.enable": false
 }
