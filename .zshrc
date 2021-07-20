@@ -15,7 +15,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# Fav=("philips")
+# Fav=("nebirhos")
 ZSH_THEME="philips"
 
 # Set list of themes to pick from when loading at random
@@ -77,12 +77,10 @@ ZSH_THEME="philips"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  node
-  fzf
-  # zsh-nvm
-  zsh-autosuggestions
-  zsh-syntax-highlighting
+    git
+    node
+    zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,15 +117,9 @@ source $ZSH/oh-my-zsh.sh
 # Load custom commands
 source $HOME/.custom-commands/custom-cmds.sh
 
-# Path to deno download location
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
 # Path to load nvm
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Path to composer
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
@@ -148,4 +140,10 @@ HISTFILE="$HOME/.zsh_history"
 
 # Disk Path
 export LITTLE_DEVIL=$(df /dev/sda1 | awk 'NR > 1 {print $6}')
+
+# Remember resolution
+# xrandr --newmode "1366x768"
+
+# Load zsh-completions
+autoload -U compinit && compinit
 
