@@ -16,11 +16,15 @@ border_size      = "1"
 background_color = "white"
 background_size  = "10"
 shadow_size      = "40x5+0+10"
-font             = "JetBrains-Mono-Regular-Nerd-Font-Complete"
-font_size        = "11"
+#  font             = "JetBrains-Mono-Regular-Nerd-Font-Complete"
+font             = "Caskaydia-Cove-Nerd-Font-Complete-Mono"
+font_size        = "12"
 color_fg         = "#ffffff"
 color_bg         = "#666666"
 radius           = "10"
+author_position  = ["SouthEast", "+28+16"]
+author           = "ScreenShoter: @" + \
+                   os.popen("echo $USER").read().rstrip("\n")
 
 os.system(f"""
 flameshot gui --raw > {original_file}
@@ -37,6 +41,11 @@ convert {target_file} \\( +clone -background black \
 
 convert {target_file} -bordercolor {background_color} \
 -border {background_size} {target_file} \
+
+echo -n " {author} " | convert {target_file} \
+-gravity {author_position[0]} -pointsize {font_size} -fill '{color_fg}' \
+-undercolor '{color_bg}' -font {font} \
+-annotate {author_position[1]} @- {target_file}
 
 convert {target_file} -gravity South -chop 0x{int(background_size)/2} \
 {target_file} \
