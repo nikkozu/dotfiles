@@ -33,6 +33,8 @@ au WinLeave,FocusLost,CmdwinLeave * setlocal nocursorline
 " === FileType ===
 " disable auto comment on new line
 au FileType * setlocal fo-=cro
+" change indent to 2 for json file
+au FileType json,jsonc setlocal et sts=2 sw=2
 " comment on jsonc
 au FileType json syntax match Comment +\/\/.\+$+
 " === FileType End ===
