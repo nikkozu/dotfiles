@@ -1,6 +1,7 @@
 local awful     = require("awful")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
+local gears     = require("gears")
 
 local lain                 = require("lain")
 local batteryarc_widget    = require("plugins.batteryarc-widget")
@@ -91,6 +92,22 @@ local mybat = batteryarc_widget {
 -- Set wallpaper
 awful.spawn.with_shell("feh --bg-scale " .. default.wallpaper)
 
+-- Fix no icon for certain apps
+client.connect_signal("manage", function(c)
+    local f = assert(io.popen("grep gtk-icon-theme-name $HOME/.gtkrc-2.0 | awk -F '\"*\"' '{print $2}'", 'r'))
+    local s = assert(f:read('*a'))
+    s = string.gsub(s, '\n', '')
+    local t = {}
+    t["stacer"] = os.getenv("HOME").."/.icons/"..s.."/16x16/apps/stacer.svg"
+
+    local icon = t[c.class]
+    if not icon then
+        return
+    end
+    icon = gears.surface(icon)
+    c.icon = icon and icon._native or nil
+end)
+
 -- build the desktop
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
@@ -146,7 +163,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             awful.button({ }, 1, function (c)
                 c:activate { context = "tasklist", action = "toggle_minimization" }
             end),
-            awful.button({ }, 3, function() awful.menu.client_list { theme = { width = 250 } } end),
+            awful.button({ }, 3, function() awful.menu.client_list { theme = { width = 150 } } end),
             awful.button({ }, 4, function() awful.client.focus.byidx(-1) end),
             awful.button({ }, 5, function() awful.client.focus.byidx( 1) end),
         },
@@ -227,6 +244,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox.widget = {
         {
             layout = wibox.layout.align.horizontal,
+            expand = "none",
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
                 mylauncher,
@@ -235,10 +253,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 sprtr,
                 single_space,
                 s.mypromptbox,
+                s.mytasklist,
             },
-            {
+            { -- Middle widgets
                 layout = wibox.layout.flex.horizontal,
-                s.mytasklist, -- Middle widget
                 {
                     mytextclock,
                     valign = "center",
