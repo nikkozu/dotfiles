@@ -18,7 +18,7 @@ set sw=4        " number of space for auto indent
 set ic          " ignore case in pattern
 set scs         " no ignore case when pattern has uppercase
 set mouse=a     " enable all mouse modes
-set rnu         " print relative line number of each line
+set nu rnu      " print relative line number of each line
 set so=5        " min. number of lines above and below cursor
 set acd         " change dir to the file in current window
 set hi=500      " total history lines
@@ -94,9 +94,9 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " copies pwd to clipboard
 :nnoremap <silent> yd :let @+=expand('%:p:h')<CR>
 
-" nvim-tree
-nnoremap <C-n>      :NvimTreeToggle<CR>
-nnoremap <leader>r  :NvimTreeRefresh<CR>
-nnoremap <leader>n  :NvimTreeFindFile<CR>
+" NERDTree
+nnoremap <C-n>      :NERDTreeToggle<CR>
+nnoremap <leader>r  :NERDTreeRefreshRoot<CR>
+nnoremap <leader>n  :NERDTreeFind<CR>
 " === Custom Keybinds End ===
 
