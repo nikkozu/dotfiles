@@ -5,7 +5,8 @@ return {
     default = {
         terminal    = terminal,
         editor      = editor,
-        editor_cmd  = terminal .. " -e " .. editor,
+        -- editor_cmd  = terminal .. " -e " .. editor,
+        editor_cmd  = "gtk-launch knvim",
         lock_screen = "betterlockscreen -l blur",
         explorer    = "nemo",
         browser     = {

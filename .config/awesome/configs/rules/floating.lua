@@ -21,8 +21,8 @@ ruled.client.connect_signal("request::rules", function()
         id       = "floating-centered",
         rule_any = {
             class = {
-                "Lxpolkit", "DiscordCanary", "Nemo", "Nm-connection-editor",
-                "TelegramDesktop", "Xarchiver", "zoom"
+                "Lxpolkit", "kitty", "Nemo", "Nm-connection-editor",
+                "TelegramDesktop", "Xarchiver", "zoom", "DiscordCanary"
             },
             name  = { "Save File", "Open Files", },
         },

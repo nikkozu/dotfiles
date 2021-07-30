@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=kitty -T=knvim -o initial_window_width=140c -o initial_window_height=35c nvim %f
+Name=knvim
+Icon=nvim
+Comment=Custom definition for kitty
+Name[en_US]=knvim
