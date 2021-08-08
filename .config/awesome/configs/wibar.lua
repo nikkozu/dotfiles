@@ -65,6 +65,20 @@ lain.widget.mem {
     end
 }
 
+-- cpu widget
+-- create the widget
+local mycpu = wibox.widget {
+    widget = wibox.widget.textbox,
+    valign = "center",
+    font   = beautiful.font
+}
+-- set the widget
+lain.widget.cpu {
+    settings = function()
+        mycpu:set_markup(cpu_now.usage .. '%')
+    end
+}
+
 -- volume widget
 local myvol = volumearc_widget {
     get_volume_cmd = "amixer sget Master",
@@ -217,13 +231,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     -- Create the wibox
+    local blank = 100  -- define blank space in right and left of wibar
     s.mywibox = wibox({
         screen       = s,
-        -- x            = s.geometry.x + 10,
-        x            = s.geometry.x + 150,
+        x            = s.geometry.x + blank,
         y            = s.geometry.y,
-        -- width        = s.geometry.width - 24,
-        width        = s.geometry.width - 304,
+        width        = s.geometry.width - 4 - (blank * 2),
         height       = 26,
         shape        = myshape,
         border_width = 2,
@@ -270,6 +283,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 mynet,
                 sprtr,
                 mymem, -- memory widget
+                sprtr,
+                mycpu,
                 sprtr,
                 wibox.widget.systray(),
                 sprtr,
