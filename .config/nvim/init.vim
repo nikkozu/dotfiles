@@ -22,7 +22,7 @@ set nu rnu      " print relative line number of each line
 set so=5        " min. number of lines above and below cursor
 set acd         " change dir to the file in current window
 set hi=500      " total history lines
-set mps+=<:>    " match pairs character
+" set mps+=<:>    " match pairs character
 
 " highlight cursorline (fix split window problem)
 au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
@@ -98,5 +98,8 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nnoremap <C-n>      :NERDTreeToggle<CR>
 nnoremap <leader>r  :NERDTreeRefreshRoot<CR>
 nnoremap <leader>n  :NERDTreeFind<CR>
+
+" terminal
+nnoremap <leader>t  :split term://zsh<CR>
 " === Custom Keybinds End ===
 
