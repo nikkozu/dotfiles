@@ -113,6 +113,10 @@ function gpp() {
   rm ${filename}
 }
 
+function bdctl() {
+    betterdiscordctl -f canary install ; betterdiscordctl -f canary reinstall
+}
+
 # function bw-add() {
   # local loginTemplate=$(bw get template item.login | jq ".username=\"$2\" | .password=\"$3\"")
   # bw get template item | jq ".name=\"$1\" | .login=$loginTemplate" | bw encode | bw create item
