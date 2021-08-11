@@ -110,16 +110,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias knvim="gtk-launch knvim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load custom commands
 source $HOME/.custom-commands/custom-cmds.sh
-
-# Path to load nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Path to composer
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
@@ -147,3 +144,10 @@ export LITTLE_DEVIL=$(df /dev/sda1 | awk 'NR > 1 {print $6}')
 # Load zsh-completions
 autoload -U compinit && compinit
 
+# FNM
+export PATH="/tmp/fnm_multishells/83158_1628354519682/bin":$PATH
+export FNM_MULTISHELL_PATH="/tmp/fnm_multishells/83158_1628354519682"
+export FNM_DIR="/home/masami/.fnm"
+export FNM_LOGLEVEL="info"
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
+export FNM_ARCH="x64"
