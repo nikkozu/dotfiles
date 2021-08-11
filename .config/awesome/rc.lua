@@ -17,7 +17,7 @@ local hotkeys = require("awful.hotkeys_popup.widget")
 -- Touchpad Widget
 -- to disable/enable touchpad when mouse is connected
 local touchpad_widget = require("plugins.touchpad-widget")
-touchpad_widget:new({ vendor = "Sunplus Innovation Technology Inc." })
+touchpad_widget:new({ vendor = "Philips SPK9304" })
 -- Configuration folder
 require("configs")
 
