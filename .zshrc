@@ -145,9 +145,4 @@ export LITTLE_DEVIL=$(df /dev/sda1 | awk 'NR > 1 {print $6}')
 autoload -U compinit && compinit
 
 # FNM
-export PATH="/tmp/fnm_multishells/83158_1628354519682/bin":$PATH
-export FNM_MULTISHELL_PATH="/tmp/fnm_multishells/83158_1628354519682"
-export FNM_DIR="/home/masami/.fnm"
-export FNM_LOGLEVEL="info"
-export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
-export FNM_ARCH="x64"
+eval "$(fnm env)"
