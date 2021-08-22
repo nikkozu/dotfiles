@@ -81,6 +81,8 @@ plugins=(
     node
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-completions
+    zsh-better-npm-completion
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -146,3 +148,7 @@ autoload -U compinit && compinit
 
 # FNM
 eval "$(fnm env)"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
