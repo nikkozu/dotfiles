@@ -117,6 +117,19 @@ function bdctl() {
     betterdiscordctl -f canary install ; betterdiscordctl -f canary reinstall
 }
 
+function get-subdom() {
+    curl -v --silent "$1" | grep -Eo '(http|https)://[^/"]+.nhentai.net'
+}
+
+function check-cbz() {
+    for file in ./**/*.cbz; do
+        local checkFile=$(zipinfo "${file}" | grep "^\-" | sed 's/  */ /g' | cut -f4 -d ' ' | grep -x "190")
+        if [[ $checkFile ]]; then
+            echo "${file} is corrupt"
+        fi
+    done
+}
+
 # function bw-add() {
   # local loginTemplate=$(bw get template item.login | jq ".username=\"$2\" | .password=\"$3\"")
   # bw get template item | jq ".name=\"$1\" | .login=$loginTemplate" | bw encode | bw create item
