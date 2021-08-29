@@ -30,7 +30,7 @@ def move_the_file(file_list):
 
     for file in file_list:
         os.system(f'mv "{doujin_dir}/{file}" "{target_dir}"')
-        print(file)
+        print(f"- {file}")
 
 # START
 total_file = int(input("How much file do you want [5]: ") or 5)
