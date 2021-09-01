@@ -10,11 +10,16 @@ function mkv2mp4() {
 
 # Make multiple CBZ file
 function make-cbz() {
-    for var in "$@"
-    do
-        zip -rj "$var.cbz" "$var"
+    for file in *; do
+        if [[ -d $file ]]; then
+            zip -rjq "$file.cbz" "$file"
+            echo "- ${file} successfully zipped!!!"
+        fi
     done
-  # zip -rj "$1.cbz" "$1"
+    # for var in "$@"
+    # do
+        # zip -rj "$var.cbz" "$var"
+    # done
 }
 
 # restart the swap
