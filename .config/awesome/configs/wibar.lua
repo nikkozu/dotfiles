@@ -79,6 +79,20 @@ lain.widget.cpu {
     end
 }
 
+-- temp widget
+-- create the widget
+local mytemp = wibox.widget {
+    widget = wibox.widget.textbox,
+    valign = "center",
+    font   = beautiful.font
+}
+-- set the widget
+lain.widget.temp {
+    settings= function()
+        mytemp:set_markup(coretemp_now .. '°C')
+    end
+}
+
 -- volume widget
 local myvol = volumearc_widget {
     get_volume_cmd = "amixer sget Master",
@@ -99,7 +113,8 @@ local mybat = batteryarc_widget {
     font                   = "Proxima Nova 6",
     show_notification_mode = "on_click",
     show_current_level     = true,
-    warning_msg_position   = "top_right"
+    warning_msg_position   = "top_right",
+    enable_battery_warning = false
 }
 -- End Create Widget }}}
 
@@ -113,6 +128,8 @@ client.connect_signal("manage", function(c)
     s = string.gsub(s, '\n', '')
     local t = {}
     t["stacer"] = os.getenv("HOME").."/.icons/"..s.."/16x16/apps/stacer.svg"
+    t["revolt-desktop"] = os.getenv("HOME").."/.icons/"..s.."/16x16/apps/revolt-desktop.svg"
+
 
     local icon = t[c.class]
     if not icon then
@@ -185,11 +202,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
             disable_task_name  = true,
             shape              = myshape,
             bg_focus           = "#7F7F7F",
-            shape_border_width = 1,
+            shape_border_width = 0,
             shape_border_color = beautiful.border_color_active,
         },
         layout = {
-            spacing        = 5,
+            spacing        = 0,
             spacing_widget = {
                 {
                     forced_width = 0,
@@ -235,11 +252,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = wibox({
         screen       = s,
         x            = s.geometry.x + blank,
-        y            = s.geometry.y,
+        y            = s.geometry.y + 1,
         width        = s.geometry.width - 4 - (blank * 2),
-        height       = 26,
+        height       = 24,
         shape        = myshape,
-        border_width = 2,
+        border_width = 1,
         border_color = beautiful.border_color_active
     })
     s.mywibox.visible = true
@@ -248,6 +265,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
     -- Splitters
     local sprtr        = wibox.widget.textbox()
     sprtr:set_text(" | ")
+    local less_than    = wibox.widget.textbox()
+    less_than:set_text(" 〱 ")
     local double_space = wibox.widget.textbox()
     double_space:set_text("  ")
     local single_space = wibox.widget.textbox()
@@ -285,6 +304,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 mymem, -- memory widget
                 sprtr,
                 mycpu,
+                sprtr,
+                mytemp,
                 sprtr,
                 wibox.widget.systray(),
                 sprtr,
