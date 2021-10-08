@@ -3,8 +3,11 @@
    "diagnostic.errorSign": "✘",
    "diagnostic.warningSign": "",
    "diagnostic.infoSign": "",
-
+   "diagnostic.checkCurrentLine": true,
+   
    // coc-json
+
+   // coc-eslint
 
    // coc-intelephense
    "intelephense.progress.enable": false

@@ -3,7 +3,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Language
 Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim'
-Plug 'captbaritone/better-indent-support-for-php-with-html'
+Plug 'spf13/snipmate-snippets'
+Plug 'shawncplus/phpcomplete.vim'
 
 " Colorscheme
 Plug 'ghifarit53/tokyonight-vim'

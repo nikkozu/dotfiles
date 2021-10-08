@@ -13,8 +13,9 @@ endfor
 
 " === Editor ===
 set et          " use space when <Tab> is inserted
-set sts=4       " number of space for <Tab>
-set sw=4        " number of space for auto indent
+set ai          " copy indent from current line to new line
+set sts=2       " number of space for <Tab>
+set sw=2        " number of space for auto indent
 set ic          " ignore case in pattern
 set scs         " no ignore case when pattern has uppercase
 set mouse=a     " enable all mouse modes
@@ -27,6 +28,10 @@ set hi=500      " total history lines
 " highlight cursorline (fix split window problem)
 au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
 au WinLeave,FocusLost,CmdwinLeave * setlocal nocursorline
+
+" replace capslock to escape
+" au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+" au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 " === Editor End ===
 
 
@@ -85,14 +90,15 @@ command! -nargs=0 NvimCfgPlug :e ~/.config/nvim/plugins.vim
 
 " coc custom commands
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Eslint   :CocCommand eslint.executeAutofix
 " === Custom Commands End ===
 
 
 " === Custom Keybinds ===
 " copies filepath to clipboard
-:nnoremap <silent> yf :let @+=expand('%:p')<CR>
+nnoremap <silent> yf :let @+=expand('%:p')<CR>
 " copies pwd to clipboard
-:nnoremap <silent> yd :let @+=expand('%:p:h')<CR>
+nnoremap <silent> yd :let @+=expand('%:p:h')<CR>
 
 " NERDTree
 nnoremap <C-n>      :NERDTreeToggle<CR>
@@ -101,5 +107,9 @@ nnoremap <leader>n  :NERDTreeFind<CR>
 
 " terminal
 nnoremap <leader>t  :split term://zsh<CR>
+
+" change html to php or vice versa
+nnoremap <leader>h :set ft=html<CR>
+nnoremap <leader>p :set ft=php<CR>
 " === Custom Keybinds End ===
 
