@@ -10,16 +10,12 @@ function mkv2mp4() {
 
 # Make multiple CBZ file
 function make-cbz() {
-    for file in *; do
-        if [[ -d $file ]]; then
-            zip -rjq "$file.cbz" "$file"
-            echo "- ${file} successfully zipped!!!"
-        fi
-    done
-    # for var in "$@"
-    # do
-        # zip -rj "$var.cbz" "$var"
-    # done
+  for file in *; do
+    if [[ -d $file ]]; then
+      zip -rjq "$file.cbz" "$file"
+      echo "- ${file} successfully zipped!!!"
+    fi
+  done
 }
 
 # restart the swap
@@ -27,28 +23,6 @@ function restart-swap() {
   sudo swapoff -a && sudo swapon -a
 }
 
-function crandr() {
-  if [[ $# -eq 0 ]] ; then
-    crandr start
-  fi
-
-  for arg in "$@"
-  do
-    case $arg in
-      stop)
-        xrandr --output VGA1 --off
-        shift
-        ;;
-      start)
-        xrandr --newmode "1280x768_60.00"   79.50  1280 1344 1472 1664  768 771 781 798 -hsync +vsync
-        xrandr --addmode VGA1 "1280x768_60.00"
-        xrandr --output LVDS1 --mode 1366x768
-        xrandr --output VGA1 --mode 1280x768_60.00 --right-of LVDS1
-        shift
-        ;;
-    esac
-  done
-}
 
 # Python custom commands
 function get-doujin() {
@@ -72,7 +46,7 @@ function lemp() {
   fi
 
   # if command match, start the process from here
-  services=("server=(nginx php-fpm7)" "db=(mariadb)")
+  services=("server=(nginx php-fpm7)" "db=(mariadb)" "git=(gitea)")
 
   for service in "${services[@]}";
   do
@@ -81,7 +55,7 @@ function lemp() {
 
   case $2 in
     all)
-      for all in "${server[@]}" "${db[@]}";
+      for all in "${server[@]}" "${db[@]}" "${git[@]}";
       do
         sudo systemctl $1 $all
       done
@@ -101,6 +75,13 @@ function lemp() {
       done
       shift
       ;;
+    git)
+      for git in "${git[@]}";
+      do
+        sudo systemctl $1 gitea
+      done
+      shift
+      ;;
     *)
       ;;
   esac
@@ -108,8 +89,8 @@ function lemp() {
 
 # Github user config
 function gituser() {
-  git config user.email "masami45@tuta.io"
-  git config user.name "nikkozu"
+  git config user.email "ldavinci@mail.com"
+  git config user.name "Leonardo da Vinci"
 }
 
 # G++ compile and run
@@ -123,22 +104,23 @@ function gpp() {
 }
 
 function bdctl() {
-    betterdiscordctl -f canary install ; betterdiscordctl -f canary reinstall
+  betterdiscordctl -f canary install ; betterdiscordctl -f canary reinstall
 }
 
 function get-subdom() {
-    curl -v --silent "$1" | grep -Eo '(http|https)://[^/"]+.nhentai.net'
+  curl -v --silent "$1" | grep -Eo '(http|https)://[^/"]+.nhentai.net'
 }
 
 function check-cbz() {
-    for file in ./**/*.cbz; do
-        local checkFile=$(zipinfo "${file}" | grep "^\-" | sed 's/  */ /g' | cut -f4 -d ' ' | grep -x "190")
-        if [[ $checkFile ]]; then
-            echo "${file} is corrupt"
-        fi
-    done
+  for file in ./**/*.cbz; do
+    local checkFile=$(zipinfo "${file}" | grep "^\-" | sed 's/  */ /g' | cut -f4 -d ' ' | grep -x "190")
+      if [[ $checkFile ]]; then
+        echo "${file} is corrupt"
+      fi
+  done
 }
 
+#=== Archived functions ===#
 # function bw-add() {
   # local loginTemplate=$(bw get template item.login | jq ".username=\"$2\" | .password=\"$3\"")
   # bw get template item | jq ".name=\"$1\" | .login=$loginTemplate" | bw encode | bw create item
@@ -181,3 +163,25 @@ function check-cbz() {
   # youtube-dl -f '18' $1 && youtube-dl -f '251' $1 && make-mkv "$videoName" && del-file "$videoName" && mkv-to-mp4 "$videoName" && rm "$videoName.mkv"
 # }
 
+# function crandr() {
+  # if [[ $# -eq 0 ]] ; then
+    # crandr start
+  # fi
+
+  # for arg in "$@"
+  # do
+    # case $arg in
+      # stop)
+        # xrandr --output VGA1 --off
+        # shift
+        # ;;
+      # start)
+        # xrandr --newmode "1280x768_60.00"   79.50  1280 1344 1472 1664  768 771 781 798 -hsync +vsync
+        # xrandr --addmode VGA1 "1280x768_60.00"
+        # xrandr --output LVDS1 --mode 1366x768
+        # xrandr --output VGA1 --mode 1280x768_60.00 --right-of LVDS1
+        # shift
+        # ;;
+    # esac
+  # done
+# }
