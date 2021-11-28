@@ -9,6 +9,10 @@ awful.keyboard.append_global_keybindings({
         awful.spawn(default.lock_screen) end,
         {description = "lock the screen", group = "custom"}
     ),
+    awful.key({ altkey            }, "Print", function()
+        awful.spawn.with_shell(default.screenshot.select) end,
+        {description = "select area to take screenshot", group = "custom"}
+    ),
     awful.key({                   }, "Print", function()
         awful.spawn.with_shell(default.screenshot.full) end,
         {description = "take a full screenshot", group = "custom"}
@@ -32,12 +36,16 @@ awful.keyboard.append_global_keybindings({
         {description = "mute volume", group = "fn keys"}
     ),
     awful.key({ }, "XF86AudioLowerVolume", function()
-        awful.spawn("amixer -q -D pulse sset Master 5%-", false)   end,
+        awful.spawn("amixer -q -D pulse sset Master 10%-", false)   end,
         {description = "decrease volume", group = "fn keys"}
     ),
     awful.key({ }, "XF86AudioRaiseVolume", function()
-        awful.spawn("amixer -q -D pulse sset Master 5%+", false)   end,
+        awful.spawn("amixer -q -D pulse sset Master 10%+", false)   end,
         {description = "increase volume", group = "fn keys"}
+    ),
+    awful.key({ }, "XF86TouchpadToggle", function()
+        awful.spawn("~/.config/awesome/shells/touchpad-toggle.sh")  end,
+        {description = "toggle the touchpad", group = "fn keys"}
     ),
 })
 

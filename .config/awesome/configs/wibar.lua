@@ -22,6 +22,7 @@ local mytextclock = wibox.widget.textclock("%m月%d日 (" .. getToday .. "), %H:
 -- Create calendar widget
 local mycal = lain.widget.cal {
     attach_to   = { mytextclock },
+    week_start  = 1,
     week_number = "left",
     notification_preset = {
         font     = "Ubuntu Mono 10",
@@ -89,7 +90,7 @@ local mytemp = wibox.widget {
 -- set the widget
 lain.widget.temp {
     settings= function()
-        mytemp:set_markup(coretemp_now .. '°C')
+        mytemp:set_markup(math.floor(coretemp_now) .. '°C')
     end
 }
 
@@ -248,7 +249,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     -- Create the wibox
-    local blank = 100  -- define blank space in right and left of wibar
+    local blank = 80  -- define blank space in right and left of wibar
     s.mywibox = wibox({
         screen       = s,
         x            = s.geometry.x + blank,

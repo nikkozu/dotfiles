@@ -1,8 +1,8 @@
 -- Global mouse bindings
 awful.mouse.append_global_mousebindings({
     awful.button({ }, 3, function () mymainmenu:toggle() end),
-    -- awful.button({ }, 4, awful.tag.viewprev),
-    -- awful.button({ }, 5, awful.tag.viewnext),
+    -- awful.button({ modkey }, 4, awful.tag.viewprev),
+    -- awful.button({ modkey }, 5, awful.tag.viewnext),
 })
 
 -- Client mouse bindings
@@ -20,7 +20,7 @@ client.connect_signal("request::default_mousebindings",
             -- end),
 
             awful.button({ modkey }, 1, awful.mouse.client.move),
-            awful.button({ modkey }, 3, awful.mouse.client.resize)
+            awful.button({ modkey }, 3, awful.mouse.client.resize),
         })
     end
 )

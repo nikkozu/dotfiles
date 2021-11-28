@@ -17,9 +17,10 @@ return {
         screenshot  = {
             full     = "~/.custom-commands/screenshot-full",
             selected = "~/.custom-commands/screenshot-select",
+            select   = "flameshot gui"
         },
         rofi        = "~/.config/rofi/launchers/launcher.sh",
-        wallpaper   = "~/Pictures/wallpapers/clay-banks-u27Rrbs9Dwc-unsplash.jpg",
+        wallpaper   = "~/Pictures/wallpapers/63964902_p0_master1200_waifu2x_art_noise1_scale_tta_1.png"
     },
 
     -- auto start apps with command

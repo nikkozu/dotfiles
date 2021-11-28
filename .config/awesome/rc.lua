@@ -40,10 +40,10 @@ myshape = function(cr, w, h)
 end
 
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("~/.config/awesome/themes/default/theme.lua")
+beautiful.init("~/.config/awesome/themes/Japanesque/theme.lua")
 beautiful.font                   = "Proxima Nova Alt 10"
 beautiful.menu_font              = "Noto Sans 9"
-beautiful.useless_gap            = 2
+beautiful.useless_gap            = 4
 beautiful.notification_icon_size = 90
 beautiful.notification_shape     = myshape
 
