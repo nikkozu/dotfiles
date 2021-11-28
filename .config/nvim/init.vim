@@ -12,6 +12,7 @@ endfor
 
 
 " === Editor ===
+set enc=utf-8   " utf-8 encoding
 set et          " use space when <Tab> is inserted
 set ai          " copy indent from current line to new line
 set sts=2       " number of space for <Tab>
@@ -23,6 +24,8 @@ set nu rnu      " print relative line number of each line
 set so=5        " min. number of lines above and below cursor
 set acd         " change dir to the file in current window
 set hi=500      " total history lines
+set ut=300      " updatetime for better UX
+set scl=number
 " set mps+=<:>    " match pairs character
 
 " highlight cursorline (fix split window problem)
