@@ -40,7 +40,7 @@ function ytdl() {
 # Starting httpd & mysqld
 function lemp() {
   # check if the command match with require commands
-  if [[ ! $1 =~ "restart|start|stop" ]]; then
+  if [[ ! $1 =~ "restart|start|stop|status" ]]; then
     echo 'Please only provide "start", "stop", or "restart" command'
     return;
   fi
@@ -52,6 +52,11 @@ function lemp() {
   do
     eval $service
   done
+
+  # if [[ $1 -eq "status" ]]; then
+    # systemctl status nginx
+    # return;
+  # fi
 
   case $2 in
     all)
@@ -89,8 +94,8 @@ function lemp() {
 
 # Github user config
 function gituser() {
-  git config user.email "ldavinci@mail.com"
-  git config user.name "Leonardo da Vinci"
+  git config user.email "masami45@tuta.io"
+  git config user.name "Nikkozu"
 }
 
 # G++ compile and run
@@ -118,6 +123,14 @@ function check-cbz() {
         echo "${file} is corrupt"
       fi
   done
+}
+
+function touchpad-toggle() {
+  if synclient -l | grep "TouchpadOff .*=.*0"; then
+    synclient TouchpadOff=1;
+  else
+    synclient TouchpadOff=0;
+  fi
 }
 
 #=== Archived functions ===#
