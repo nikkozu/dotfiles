@@ -11,16 +11,16 @@ return {
         explorer    = "nemo",
         browser     = {
             brave   = "brave-browser-dev",
-            firefox = "firefox-developer-edition"
+            firefox = "firefox-nightly"
         },
-        discord     = "discord-canary",
+        discord     = "discord-canary --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy",
         screenshot  = {
             full     = "~/.custom-commands/screenshot-full",
             selected = "~/.custom-commands/screenshot-select",
             select   = "flameshot gui"
         },
         rofi        = "~/.config/rofi/launchers/launcher.sh",
-        wallpaper   = "~/Pictures/wallpapers/63964902_p0_master1200_waifu2x_art_noise1_scale_tta_1.png"
+        wallpaper   = "~/Pictures/wallpapers/hatsune_miku.png"
     },
 
     -- auto start apps with command

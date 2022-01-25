@@ -44,8 +44,12 @@ awful.keyboard.append_global_keybindings({
         {description = "increase volume", group = "fn keys"}
     ),
     awful.key({ }, "XF86TouchpadToggle", function()
-        awful.spawn("~/.config/awesome/shells/touchpad-toggle.sh")  end,
+        awful.spawn.with_shell("~/.config/awesome/shells/touchpad-toggle.sh")  end,
         {description = "toggle the touchpad", group = "fn keys"}
+    ),
+    awful.key({ 'Mod4' }, "p", function()
+        awful.spawn.with_shell("~/.config/awesome/shells/crandr.sh") end,
+        {description = "toggle the presentation display", group = "fn keys"}
     ),
 })
 

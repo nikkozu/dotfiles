@@ -130,6 +130,7 @@ client.connect_signal("manage", function(c)
     local t = {}
     t["stacer"] = os.getenv("HOME").."/.icons/"..s.."/16x16/apps/stacer.svg"
     t["revolt-desktop"] = os.getenv("HOME").."/.icons/"..s.."/16x16/apps/revolt-desktop.svg"
+    t["LibreWolf"] = os.getenv("HOME").."/.icons/"..s.."/16x16/apps/librewolf.svg"
 
 
     local icon = t[c.class]

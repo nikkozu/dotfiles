@@ -13,10 +13,12 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "e", function() awful.spawn(default.explorer) end,
         {description = "open " .. default.explorer, group = "launcher"}
     ),
-    awful.key({ modkey,           }, "b", function() awful.spawn(default.browser.brave) end,
+    awful.key({ modkey, "Shift"   }, "b", function() awful.spawn(default.browser.brave) end,
         {description = "open brave", group = "launcher"}
     ),
-    awful.key({ modkey, "Shift"   }, "b", function() awful.spawn(default.browser.firefox) end,
+    awful.key({ modkey,           }, "b", function() awful.spawn(default.browser.firefox, { 
+            floating = false
+    }) end,
         {description = "open firefox", group = "launcher"}
     ),
     awful.key({ modkey            }, "n", function() awful.spawn(default.editor_cmd) end,
