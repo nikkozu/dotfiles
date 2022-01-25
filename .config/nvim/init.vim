@@ -1,3 +1,4 @@
+let g:python3_host_prog = '/usr/bin/python'
 " list extended config files
 let g:config_file_list = [
     \ 'coc.vim',
