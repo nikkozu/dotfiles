@@ -13,7 +13,7 @@ function make-cbz() {
   for file in *; do
     if [[ -d $file ]]; then
       zip -rjq "$file.cbz" "$file"
-      echo "- ${file} successfully zipped!!!"
+      echo "- ${file} - successfully zipped!!!"
     fi
   done
 }
@@ -30,11 +30,24 @@ function get-doujin() {
 }
 
 function testing() {
-  $HOME/.custom-commands/testing "$@"
+  # $HOME/.custom-commands/testing "$@"
+  xrandr |
+  awk -v monitor="^HDMI1 connected" '/connected/ {p = 0}
+    $0 ~ monitor {p = 1}
+    p'
 }
 
 function ytdl() {
   $HOME/.custom-commands/ytdl "$1"
+}
+
+function yt-play() {
+  $HOME/.custom-commands/yt-play $@
+  # mpv --ytdl-format="bestvideo[height<=?480][vcodec!=vp9]+bestaudio/best" $1
+}
+
+function yta-play() {
+  mpv --ytdl-format="bestaudio/best" $1
 }
 
 # Starting httpd & mysqld
@@ -108,6 +121,16 @@ function gpp() {
   rm ${filename}
 }
 
+# Java compile and run
+function jcr() {
+  local filePath="$1"
+  local filename=${filePath%%.*}
+
+  javac ${filename}.java
+  java ${filename}
+  rm ${filename}.class
+}
+
 function bdctl() {
   betterdiscordctl -f canary install ; betterdiscordctl -f canary reinstall
 }
@@ -133,12 +156,30 @@ function touchpad-toggle() {
   fi
 }
 
-#=== Archived functions ===#
-# function bw-add() {
-  # local loginTemplate=$(bw get template item.login | jq ".username=\"$2\" | .password=\"$3\"")
-  # bw get template item | jq ".name=\"$1\" | .login=$loginTemplate" | bw encode | bw create item
-# }
+function crandr() {
+  if [[ $# -eq 0 ]] ; then
+    crandr start
+  fi
 
+  for arg in "$@"
+  do
+    case $arg in
+      stop)
+        xrandr --output HDMI1 --off
+        shift
+        ;;
+      start)
+        xrandr --newmode "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+        xrandr --addmode HDMI1 "1440x900_60.00"
+        xrandr --output LVDS1 --mode 1366x768
+        xrandr --output HDMI1 --mode 1440x900_60.00 --right-of LVDS1
+        shift
+        ;;
+    esac
+  done
+}
+
+#=== Archived functions ===#
 # # Shortcut command to use youtube-dl
 # # Video - {135} mp4 480p
 # # Audio - {251} webm 48K
